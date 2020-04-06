@@ -85,6 +85,27 @@ AdvertiseUserRegistrationHTTPAddresses = ["http://127.0.0.1:36968"]
       log_level = "DEBUG"
       data_dir = "/conf/service_data"
 
+   [[Provider.CBORPluginKaetzchen]]
+     Disable = false
+     Capability = "panda"
+     Endpoint = "+panda"
+     Command = "/go/bin/panda_server"
+     MaxConcurrency = 1
+     [Provider.CBORPluginKaetzchen.Config]
+      log_dir = "/conf/service_logs"
+      log_level = "DEBUG"
+      fileStore = "/conf/service_data/panda.storage"
+
+  [[Provider.CBORPluginKaetzchen]]
+    Disable = false
+    Capability = "spool"
+    Endpoint = "+spool"
+    Command = "/go/bin/memspool"
+    MaxConcurrency = 1
+    [Provider.CBORPluginKaetzchen.Config]
+      data_store = "/conf/service_data/memspool.storage"
+      log_dir = "/conf/service_logs"
+
 #
 # The Management section specifies the management interface configuration.
 #
